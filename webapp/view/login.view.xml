@@ -1,0 +1,108 @@
+<mvc:View controllerName="com.sap.pool-ui.controller.login" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page title="Login Form">
+
+				<FlexBox id="main" justifyContent= "Center" alignItems="Center" alignContent="Center">
+
+				<FlexBox id="customLoginPage" justifyContent="Center" alignItems="Center" alignContent="Center">
+					<VBox id="loginBox" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+						<!--<FlexBox id="top"></FlexBox>
+						<FlexBox id="bottom"></FlexBox> -->
+						
+					
+						<VBox >
+							<items>
+								<VBox id="vBox">
+									<HBox alignItems="Center">
+										<Button id="loginButton" width="192px" text="Login" press="onLoginTap"></Button>
+										<Button id="signupButton" width="192px" text="Signup" press="onSignupTap"></Button>
+									</HBox>
+									<VBox id="signin" class="signin" alignItems="Center">
+										<Input width="384px" id="uid" placeholder="User Name" type="Text"
+										valueStateText="Name must not be empty. Maximum 10 characters."
+										valueState="{login>/userNameState}"
+										change="onChangeUserName"
+										value="
+											{
+												path : 'login>/name'
+										}">
+												
+										</Input>
+										<Input width="384px" id="pasw" placeholder="Password" type="Password" 
+										valueState="{login>/passwordState}"
+										valueStateText="password is too weak"
+										change="onChangePassword"
+										value="{
+											path : 'login>/password',
+											type : '.customLoginPassword'
+										}"
+										>
+										
+										</Input>
+									</VBox>
+									<VBox id="signup" class="signup" alignItems="Center">
+										<Input width="384px" id="sign_uname" placeholder="User Name"
+										value="
+										{
+												path : 'singup>/name',
+												type : 'sap.ui.model.type.String',
+												constraints : {
+													minLength: 1,
+													maxLength: 10
+												}
+										}"
+										valueStateText="Name must not be empty. Maximum 10 characters."
+										valueState="{signup>/userNameState}"
+										change="onChangeSignUserName"
+										>
+												
+										</Input>
+										<Input width="384px" id="sign_uemail" placeholder="User Email"
+										value="{
+										path : 'signup>/email',
+										type : '.customEMailType'
+										}"
+										valueStateText="Please enter valid email id"
+										valueState="{signup>/emailState}"
+										change="onChangeSignUserEmail"
+										>
+											
+										</Input>
+										<Input width="384px" id="sign_upasw" placeholder="Password" type="Password"
+										value="
+										{
+											path : 'signup>/password',
+											type : '.customSignupPassword'
+										}
+										"
+										valueStateText="password is too weak"
+										valueState="{signup>/passwordState}"
+										change="onChangeSignPassword">
+												
+										</Input>
+										<Input width="384px" id="sign_upasw_confirm" placeholder="Confirm Password" type="Password" change="onChangeSignPasswordConfirm"
+										valueStateText="password must match"
+										valueState="{signup>/passwordConfirmState}">
+											
+										</Input>
+									</VBox>
+									<VBox alignItems="Center">
+										<Button text="Submit" press="onSubmitTap"> </Button>
+									</VBox>
+									<Text text="Forgot Password?"></Text>
+									
+								</VBox>
+							</items>
+						</VBox>
+						
+					</VBox>
+				</FlexBox>
+			</FlexBox>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,9 @@
+<mvc:View 
+	controllerName="com.sap.pool-ui.view.cards.carrom.CardView"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	width="100%"
+	displayBlock="true">
+	<Image src="{/mapImageUrl}" alt="Sales manager" width="100%" />
+</mvc:View>

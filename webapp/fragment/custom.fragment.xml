@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<Dialog id="confirmDialog" title="Confirmation Dialog">
+		<VBox class="sapUiTinyMargin" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+			
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Pool Table Name" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/results/poolName}"/>
+			</HBox>
+
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Building Name" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/results/buildingName}"/>
+			</HBox>
+
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Floor Number" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/results/floorNo}"/>
+			</HBox>
+
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Date" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/date}"/>
+			</HBox>
+
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Time Slot" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/timeSlot}"/>
+			</HBox>
+			<HBox class="sapUiTinyMargin">
+				<Label class="sapUiTinyMargin" text="Match Type" labelFor="input-e"/>
+				<Text class="sapUiTinyMargin" text="{customModel>/matchType}"/>
+			</HBox>
+			<HBox class="sapUiTinyMargin">
+					<List
+						headerText="Members"
+						items="{customModel>/members}" >
+							<StandardListItem title="{customModel>name}"/>
+					</List>
+			</HBox>
+		</VBox>
+		<beginButton>
+			<Button id="confirmInformationCustom" text="Confirm" press="onConfirmCustom"/>
+		</beginButton>
+		<endButton>
+			<Button id="cancelInformationCustom" text="Cancel" press="onCancelConfirmCustom"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

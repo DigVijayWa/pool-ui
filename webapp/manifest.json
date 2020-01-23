@@ -1,0 +1,125 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "com.sap.pool-ui",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "com.sap.pool-ui.view.login",
+			"type": "XML",
+			"async": true,
+			"id": "login"
+		},
+		"handleValidation": true,
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sap.pool-ui.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.sap.pool-ui.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+		"routes": [{
+				"name": "RouteView1",
+				"pattern": "RouteView1",
+				"target": ["TargetView1"]
+			},
+			{
+				"name" : "login",
+				"pattern" : "",
+				"target" : "login"
+			},
+			{
+				"name" : "home",
+				"pattern" : "home",
+				"target" : "home"
+			},
+			{
+				"name" : "land",
+				"pattern" : "land",
+				"target"  : "land"
+			}
+			],
+			"targets": {
+				"TargetView1": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "login",
+					"viewName": "login"
+				},
+				"login" : {
+					"viewType" : "XML",
+					"viewName" : "login"
+				},
+				"home" : {
+					"viewType" : "XML",
+					"viewName" : "home"
+				},
+				"land" : {
+					"viewType" : "XML",
+					"viewName" : "land"
+				}				
+			}
+		}
+	}
+}

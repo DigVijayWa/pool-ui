@@ -1,0 +1,416 @@
+	<mvc:View xmlns:mvc= "sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	controllerName= "com.sap.pool-ui.controller.home"
+	xmlns:u="sap.ui.unified" displayBlock="true" 
+	xmlns="sap.m"
+	xmlns:vbm="sap.ui.vbm"
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:tnt="sap.tnt"
+	xmlns:c="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:uxap="sap.uxap" 
+	xmlns:j="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+			<SplitApp id="SplitAppDemo" initialDetail="profile" initialMaster="master" orientationChange="onOrientationChange">
+				<detailPages>
+					<Page id="profile">
+						<!-- To implement the object page here to display all the records of the player
+
+						-->
+						<VBox fitContainer="true">
+								<f:SimpleForm id="SimpleFormDisplay480"
+									minWidth="1024"
+									maxContainerCols="2"
+									editable="false"
+									layout="ResponsiveGridLayout"
+									title="Profile"
+									labelSpanL="4"
+									labelSpanM="4"
+									emptySpanL="0"
+									emptySpanM="0"
+									columnsL="2"
+									columnsM="2">
+									<f:content>
+											<j:Avatar
+												src="{avatar>/url}"
+												displaySize="XL"
+												press="onPressAvatar"
+												id="av">
+											</j:Avatar>
+											<c:Title text="User information" />
+											<Label text="User Name" />
+											<Text text="{avatar>/userName}" />
+											<Label text="Matches Played" />
+											<Text text="{profileModel>/countMatches}" />
+											<Label text="Matches Won" />
+											<Text text="0" />
+											<Label text="Win Percentage" />
+											<Text text="0" />
+									</f:content>
+									<f:layoutData>
+										<FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
+									</f:layoutData>
+								</f:SimpleForm>
+								<IconTabBar upperCase="true" expandable="false" applyContentPadding="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding" select="onIconTabTap">
+									<items>
+										<IconTabFilter text="Matches" key="match">
+											<Panel
+												id="panel3"
+												busyIndicatorDelay="0"
+												headerText=""
+											>
+												<Table id="listInformation_2" items="{matchData>/results}" noDataText="{i18n>noDataText}">
+													<headerToolbar>
+														<OverflowToolbar id="otbSubheader_2">
+															<Title/>
+															<ToolbarSpacer/>
+															
+														</OverflowToolbar>
+													</headerToolbar>
+													<columns>
+														<Column>
+															<Text text="Match ID"/>
+														</Column>
+														<Column>
+															<Text text="Match Type"/>
+														</Column>
+														<Column>
+															<Text text="Match Date"/>
+														</Column>
+														<Column>
+															<Text text="Team A"/>
+														</Column>
+														<Column>
+															<Text text="Team B"/>
+														</Column>
+													</columns>
+													<items id="nonEditable" visible="true">
+														<ColumnListItem press="onPoolRecordTap">
+															<cells id="notEditableCrisis" visible="true">
+																<Text text="{matchData>matchId}"/>
+																<Text text="{matchData>matchType}"/>
+																<Text text="{matchData>matchDate}"/>
+																<Text text="{matchData>teamOne}"/>
+																<Text text="{matchData>teamTwo}"/>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+											</Panel>
+										</IconTabFilter>
+										<IconTabFilter text="Booked Pool Tables" key="pool">
+											<Panel
+											id="panel4"
+											busyIndicatorDelay="0"
+											headerText=""
+											>
+												<Table id="listInformation_3" items="{matchData_1>/results}" noDataText="{i18n>noDataText}">
+													<headerToolbar>
+														<OverflowToolbar id="otbSubheader_3">
+															<Title/>
+															<ToolbarSpacer/>
+															
+														</OverflowToolbar>
+													</headerToolbar>
+													<columns>
+														<Column>
+															<Text text="Pool Table Name"/>
+														</Column>
+														<Column>
+															<Text text="Building Name"/>
+														</Column>
+														<Column>
+															<Text text="Floor Number"/>
+														</Column>
+														<Column>
+															<Text text="Booking Date"/>
+														</Column>
+														<Column>
+															<Text text="Time Slot"/>
+														</Column>
+													</columns>
+													<items id="nonEditable" visible="true">
+														<ColumnListItem press="onPoolRecordTap">
+															<cells id="notEditableCrisis" visible="true">
+																<Text text="{matchData_1>poolName}"/>
+																<Text text="{matchData_1>buildingName}"/>
+																<Text text="{matchData_1>floorNo}"/>
+																<Text text="{matchData_1>bookingDate}"/>
+																<Text text="{matchData_1>startTime}"/>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+										</Panel>
+										</IconTabFilter>
+									</items>
+									<content>
+										<t:AnalyticalTable visibleRowCountMode="Auto" selectionMode="MultiToggle" rowHeight="32">
+											<t:toolbar>
+												<OverflowToolbar>
+													<ToolbarSpacer />
+													<SearchField width="12rem" />
+													<ToolbarSpacer width="1rem" />
+													<SegmentedButton>
+														<buttons>
+															<Button icon="sap-icon://table-view" />
+															<Button icon="sap-icon://bar-chart" />
+														</buttons>
+													</SegmentedButton>
+													<ToolbarSpacer width="1rem" />
+													<Button icon="sap-icon://group-2" type="Transparent" />
+													<Button icon="sap-icon://action-settings" type="Transparent" />
+												</OverflowToolbar>
+											</t:toolbar>
+											<t:columns>
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+											</t:columns>
+										</t:AnalyticalTable>
+									</content>
+									<layoutData>
+										<FlexItemData growFactor="1" baseSize="0%"/>
+									</layoutData>
+								</IconTabBar>
+						</VBox>
+
+					</Page>
+					<Page id="quickMatch">
+						<!-- To implement input setting for the player to search for free pool table.
+						-->
+							<VBox alignItems="Center" alignContent="Center" justifyContent="Center">
+								<Label text="Please enter a time-slot to view available pool tables" labelFor="input-a"/>
+								<Select
+									enabled="{quickMatch>/enabled}"
+									forceSelection="false"
+									selectedKey="{quickMatch>/selectedTimeSlot}"
+									items="{quickMatch>/timeCollection}"
+									id="input-a"
+									>
+
+									<core:Item key="{quickMatch>timeId}" text="{quickMatch>time}" />
+								</Select>
+								<Button text="View" press="onViewTap"> </Button>
+							</VBox>
+							<Panel
+									id="panel1"
+									busyIndicatorDelay="0"
+									headerText="Available Pool Tables"
+							>
+							<FlexBox>
+									<Table id="listInformation" items="{poolTableData>/results}" noDataText="{i18n>noDataText}">
+											<headerToolbar>
+												<OverflowToolbar id="otbSubheader">
+													<Title/>
+													<ToolbarSpacer/>
+													
+												</OverflowToolbar>
+											</headerToolbar>
+											<columns>
+												<Column>
+													<Text text="Pool-Table Name"/>
+												</Column>
+												<Column>
+													<Text text="Building No."/>
+												</Column>
+												<Column>
+													<Text text="Floor No."/>
+												</Column>
+												<Column>
+													<Text text="Condition"/>
+												</Column>
+												<Column>
+													<Text text="Availability"/>
+												</Column>
+												<Column>
+													<Text text="booking"/>
+												</Column>
+											</columns>
+											<items id="nonEditable" visible="true">
+												<ColumnListItem press="onPoolRecordTap">
+													<cells id="notEditableCrisis" visible="true">
+														<Text text="{poolTableData>poolName}"/>
+														<Text text="{poolTableData>buildingName}"/>
+														<Text text="{poolTableData>floorNo}"/>
+														<Text text="{poolTableData>poolCondition}"/>
+														<Text text="{poolTableData>status}"/>
+														<Button text="Book" press="onPoolRecordTap"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+							</FlexBox>
+						</Panel>
+					</Page>
+					<Page id="customMatch">
+						<!-- To implement input setting for the player to search and invite players for a specific 
+							time.
+							1. fetch building list and assign it to the select control.
+							2. according to the building selected fetch the floor count of the building
+							3. time slot standard.
+
+						-->
+								<Wizard id="CreateProductWizard"
+								complete="wizardCompletedHandler">
+									<WizardStep id="matchPlayerSelection"
+												title="Match and Player Selection"
+												validated="false"
+												activate="playerValidation">
+
+									<!-- match Type and player selection -->
+										<VBox alignItems="Center">
+											<Label text="Please select the Match Type" labelFor="input-e"/>
+											<Select
+												selectedKey="{userData>/matchType}"
+												id="input-e"
+												change="onChangeMatchType"
+												>
+
+												<core:Item key="SINGLE" text="Two Player" />
+												<core:Item key="DOUBLE" text="Four Player" />
+											</Select>
+											<FlexBox> </FlexBox>
+											<Label text="Please Select Players" labelFor="input-f"/>
+											<MultiInput
+											textFormatMode="KeyValue"
+											id="input-f"
+											width="500px"
+											maxTokens="{userData>/playerCount}"
+											suggestionItems="{userData>/users}"
+											showValueHelp="false"
+											change="playerValidation"
+											>
+												<suggestionItems>
+													<core:ListItem key="{userData>userEmail}" text="{userData>userName}" />
+												</suggestionItems>
+											</MultiInput>
+										</VBox>
+										
+									</WizardStep>
+									<WizardStep id="poolTableSelection"
+												validated="false"
+												title="Time-Slot Selection"
+												activate="timeSlotValidation">
+
+									<!-- time selection -->
+									<VBox alignItems="Center">
+										<Label text="Please select the Date for the match" labelFor="input-g"/>
+											<DatePicker id="input-h" change="onChangeDate" class="sapUiSmallMarginBottom" valueFormat="MM-dd-yyyy" 
+											valueStateText="Please enter a date"/>
+										<Label text="Please select the time-slot" labelFor="input-d"/>
+
+											<Select
+												enabled="{quickMatch>/enabled}"
+												forceSelection="false"
+												selectedKey="{quickMatch>/selectedTimeSlot}"
+												items="{quickMatch>/timeCollection}"
+												id="input-d"
+												>
+												<core:Item key="{quickMatch>timeId}" text="{quickMatch>time}" />
+											</Select>
+											<Button text="View" press="onViewTap"> </Button>
+									</VBox>
+
+									<Panel
+									id="panel2"
+									busyIndicatorDelay="0"
+									headerText="Available Pool Tables"
+							>
+							<FlexBox>
+									<Table id="listInformation_1"
+										   items="{poolTableData_1>/results}" 
+										   noDataText="{i18n>noDataText}"
+										   >
+											<headerToolbar>
+												<OverflowToolbar id="otbSubheader_1">
+													<Title/>
+													<ToolbarSpacer/>
+													
+												</OverflowToolbar>
+											</headerToolbar>
+											<columns>
+												<Column width="11rem">
+													<Label text="Pool-Table Name" />
+													
+														
+													
+												</Column>
+												<Column width="11rem">
+													<Label text="Building No." />
+													
+														
+													
+												</Column>
+												<Column width="6rem" hAlign="End">
+													<Label text="Floor No." />
+													
+														
+													
+												</Column>
+												<Column width="9rem">
+													<Label text="Condition" />
+													
+														
+													
+												</Column>
+												<Column width="9rem">
+													<Label text="Availability" />
+														
+												</Column>
+												<Column width="9rem">
+													<Label text="Selection" />
+														
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem press="onPoolRecordTap">
+													<cells id="notEditableCrisis_1" visible="true">
+														<Label text="{poolTableData_1>poolName}" />
+														<Label text="{poolTableData_1>buildingName}" />
+														<Label text="{poolTableData_1>floorNo}" />
+														<Label text="{poolTableData_1>poolCondition}" />
+														<Label text="{poolTableData_1>status}" />
+														<RadioButton select="onSelectPool" groupName="GroupA" text=""/>
+													</cells>
+												</ColumnListItem>
+											</items>
+											
+										</Table>
+							</FlexBox>
+						</Panel>
+										
+									</WizardStep>
+									
+						</Wizard>
+					</Page>
+					<Page id="logout">
+						<VBox justifyContent="Center" alignItems="Center" alignContent="Center">
+							<Label text="Are You Sure You Want To Logout ? "/>
+							<HBox>
+								<Button type="Accept" text="Confirm" press="onLogout"/>
+								<Button type="Reject" text="Cancel"/>
+							</HBox>
+						</VBox>
+					</Page>
+					
+				
+				</detailPages>
+				<masterPages>
+					<Page id="master" title="TITLE" class="sapUiStdPage" showNavButton="true" navButtonPress="onPressMasterBack">
+						<content>
+							<List itemPress="onListItemPress">
+								<items>
+									<StandardListItem title="Profile" type="Active" custom:to="profile"/>
+									<StandardListItem title="Quick Match" type="Active" custom:to="quickMatch"/>
+									<StandardListItem title="Custom Match" type="Active" custom:to="customMatch"/>
+									<StandardListItem title="Logout" type="Active" custom:to="logout"/>
+								</items>
+							</List>
+						</content>
+					</Page>
+				</masterPages>
+			</SplitApp>
+</mvc:View>
