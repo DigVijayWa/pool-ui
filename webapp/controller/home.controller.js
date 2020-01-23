@@ -218,6 +218,7 @@ sap.ui.define([
 				this.byId('input-h').setValueState(sap.ui.core.ValueState.None);
 			}
 			var dataBody = {
+				'gameObjectClass' : 'snooker',
 				'startTime' : startTime,
 				'bookingDate' : date,
 				'accessToken' : this.accessToken,
@@ -251,6 +252,7 @@ sap.ui.define([
 			if(this.currPage === 'quickMatch') {
 				oPanel = this.byId('panel1');
 				dataBody = {
+					'gameObjectClass' : 'snooker',
 					'poolId' : this.quickMatchObject.results.poolId,
 					'startTime' : this.quickMatchObject.timeSlot,
 					'userId' : this.userId,
@@ -259,6 +261,7 @@ sap.ui.define([
 					'tokenType' : this.tokenType
 				};
 				dataB = {
+					'gameObjectClass' : 'snooker',
 					'startTime' : this.getView().byId('input-a').getSelectedItem().mProperties.key,
 					'bookingDate' : '08-29-2019',
 					'accessToken' : this.accessToken,
@@ -285,7 +288,7 @@ sap.ui.define([
 		},
 		fetchPoolTableData : function(type,data,oPanel) {
 			
-			PostData.postData('pool-table',data,type).then(result=>{
+			PostData.postData('game-object',data,type).then(result=>{
 				//console.log(result.success);
 				//console.log(result);
 				var resultData = {

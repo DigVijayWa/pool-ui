@@ -22,8 +22,8 @@ sap.ui.define([
 			    console.log('accessing :'+BaseURL+type+'/'+subType+userData);
 
 			    //subtype
-			    var pool_table_get_all_available = 'get-all-available/'; //input startTime
-			    var pool_table_get_specific_available = 'get-specific-available/' //input buildingId,floorNo,startTime
+			    var pool_table_get_all_available = 'get-all-available/'; //input game-class,startTime
+			    var pool_table_get_specific_available = 'get-specific-available/' //input game-class,buildingId,floorNo,startTime
 			    var pool_table_book_pool_table = 'book-pool-table/' //userId,poolId,startTime
 			    
 			    var building_floor_count = 'floor-count/'; //input buildingId
@@ -48,10 +48,10 @@ sap.ui.define([
 			            case game_object : 
 			                              switch(subType) {
 			                                        case pool_table_get_all_available :  
-			                                                                                url=type+'/'+subType+userData.startTime+'/'+userData.bookingDate; 
+			                                                                                url=type+'/'+subType+userData.gameObjectClass+'/'+userData.startTime+'/'+userData.bookingDate; 
 			                                                                                break;
 			                                        case pool_table_get_specific_available :
-			                                                                                url=type+'/'+subType
+			                                                                                url=type+'/'+subType+userData.gameObjectClass+'/'
 			                                                                                +userData.buildingId+'/'+userData.floorNo+'/'+userData.startTime;
 			                                                                                break;
 			                                        case pool_table_book_pool_table : 

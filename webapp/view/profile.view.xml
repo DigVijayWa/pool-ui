@@ -1,0 +1,182 @@
+<mvc:View xmlns:mvc= "sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified" displayBlock="true" 
+	xmlns="sap.m"
+	xmlns:vbm="sap.ui.vbm"
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:tnt="sap.tnt"
+	xmlns:c="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:uxap="sap.uxap" 
+	xmlns:j="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+	<Page id="profile">
+						<!-- To implement the object page here to display all the records of the player
+
+						-->
+						<VBox fitContainer="true">
+								<f:SimpleForm id="SimpleFormDisplay480"
+									minWidth="1024"
+									maxContainerCols="2"
+									editable="false"
+									layout="ResponsiveGridLayout"
+									title="Profile"
+									labelSpanL="4"
+									labelSpanM="4"
+									emptySpanL="0"
+									emptySpanM="0"
+									columnsL="2"
+									columnsM="2">
+									<f:content>
+											<j:Avatar
+												src="{avatar>/url}"
+												displaySize="XL"
+												press="onPressAvatar"
+												id="av">
+											</j:Avatar>
+											<c:Title text="User information" />
+											<Label text="User Name" />
+											<Text text="{avatar>/userName}" />
+											<Label text="Matches Played" />
+											<Text text="{profileModel>/countMatches}" />
+											<Label text="Matches Won" />
+											<Text text="0" />
+											<Label text="Win Percentage" />
+											<Text text="0" />
+									</f:content>
+									<f:layoutData>
+										<FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
+									</f:layoutData>
+								</f:SimpleForm>
+								<IconTabBar upperCase="true" expandable="false" applyContentPadding="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding" select="onIconTabTap">
+									<items>
+										<IconTabFilter text="Matches" key="match">
+											<Panel
+												id="panel3"
+												busyIndicatorDelay="0"
+												headerText=""
+											>
+												<Table id="listInformation_2" items="{matchData>/results}" noDataText="{i18n>noDataText}">
+													<headerToolbar>
+														<OverflowToolbar id="otbSubheader_2">
+															<Title/>
+															<ToolbarSpacer/>
+															
+														</OverflowToolbar>
+													</headerToolbar>
+													<columns>
+														<Column>
+															<Text text="Match ID"/>
+														</Column>
+														<Column>
+															<Text text="Match Type"/>
+														</Column>
+														<Column>
+															<Text text="Match Date"/>
+														</Column>
+														<Column>
+															<Text text="Team A"/>
+														</Column>
+														<Column>
+															<Text text="Team B"/>
+														</Column>
+													</columns>
+													<items id="nonEditable" visible="true">
+														<ColumnListItem press="onPoolRecordTap">
+															<cells id="notEditableCrisis" visible="true">
+																<Text text="{matchData>matchId}"/>
+																<Text text="{matchData>matchType}"/>
+																<Text text="{matchData>matchDate}"/>
+																<Text text="{matchData>teamOne}"/>
+																<Text text="{matchData>teamTwo}"/>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+											</Panel>
+										</IconTabFilter>
+										<IconTabFilter text="Booked Pool Tables" key="pool">
+											<Panel
+											id="panel4"
+											busyIndicatorDelay="0"
+											headerText=""
+											>
+												<Table id="listInformation_3" items="{matchData_1>/results}" noDataText="{i18n>noDataText}">
+													<headerToolbar>
+														<OverflowToolbar id="otbSubheader_3">
+															<Title/>
+															<ToolbarSpacer/>
+															
+														</OverflowToolbar>
+													</headerToolbar>
+													<columns>
+														<Column>
+															<Text text="Pool Table Name"/>
+														</Column>
+														<Column>
+															<Text text="Building Name"/>
+														</Column>
+														<Column>
+															<Text text="Floor Number"/>
+														</Column>
+														<Column>
+															<Text text="Booking Date"/>
+														</Column>
+														<Column>
+															<Text text="Time Slot"/>
+														</Column>
+													</columns>
+													<items id="nonEditable" visible="true">
+														<ColumnListItem press="onPoolRecordTap">
+															<cells id="notEditableCrisis" visible="true">
+																<Text text="{matchData_1>poolName}"/>
+																<Text text="{matchData_1>buildingName}"/>
+																<Text text="{matchData_1>floorNo}"/>
+																<Text text="{matchData_1>bookingDate}"/>
+																<Text text="{matchData_1>startTime}"/>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+										</Panel>
+										</IconTabFilter>
+									</items>
+									<content>
+										<t:AnalyticalTable visibleRowCountMode="Auto" selectionMode="MultiToggle" rowHeight="32">
+											<t:toolbar>
+												<OverflowToolbar>
+													<ToolbarSpacer />
+													<SearchField width="12rem" />
+													<ToolbarSpacer width="1rem" />
+													<SegmentedButton>
+														<buttons>
+															<Button icon="sap-icon://table-view" />
+															<Button icon="sap-icon://bar-chart" />
+														</buttons>
+													</SegmentedButton>
+													<ToolbarSpacer width="1rem" />
+													<Button icon="sap-icon://group-2" type="Transparent" />
+													<Button icon="sap-icon://action-settings" type="Transparent" />
+												</OverflowToolbar>
+											</t:toolbar>
+											<t:columns>
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+												<t:AnalyticalColumn />
+											</t:columns>
+										</t:AnalyticalTable>
+									</content>
+									<layoutData>
+										<FlexItemData growFactor="1" baseSize="0%"/>
+									</layoutData>
+								</IconTabBar>
+						</VBox>
+
+					</Page>
+
+
+
+</mvc:View>

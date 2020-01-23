@@ -97,6 +97,16 @@
 				"name" : "land",
 				"pattern" : "land",
 				"target"  : "land"
+			},
+			{
+				"name" : "profile",
+				"pattern" : "profile",
+				"target" : "profile"
+			},
+			{
+				"name" : "detail",
+				"pattern" : "pattern",
+				"target" : "detail"
 			}
 			],
 			"targets": {
@@ -118,7 +128,15 @@
 				"land" : {
 					"viewType" : "XML",
 					"viewName" : "land"
-				}				
+				},
+				"profile" : {
+					"viewType" : "XML",
+					"viewName" : "profile"
+				},
+				"detail" : {
+					"viewType" : "XML",
+					"viewName" : "detail"
+				}			
 			}
 		}
 	}
